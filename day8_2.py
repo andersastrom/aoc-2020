@@ -3,19 +3,19 @@ class Day8_2:
 
     def __init__(self):
         acc = 0
-        insts = self.input.split('\n')
-        nr_of_instructions = len(insts)
+        original_instructions = self.input.split('\n')
+        nr_of_instructions = len(original_instructions)
         visited_indexes = set()
         tested_instructions = set()
         i = 0
+        insts = original_instructions
         while True:
             if i == nr_of_instructions:
                 print(acc)
                 break
 
             if i in visited_indexes:
-                original_instructions = self.input.split('\n')
-                insts, tested_instructions = self.swap(original_instructions, tested_instructions)
+                insts, tested_instructions = self.swap(original_instructions.copy(), tested_instructions)
                 acc = 0
                 visited_indexes = set()
                 i = 0
