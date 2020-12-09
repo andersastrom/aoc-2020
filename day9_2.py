@@ -1,4 +1,4 @@
-from collections import Counter
+from itertools import combinations
 
 
 class Day9_2:
@@ -1025,14 +1025,7 @@ class Day9_2:
             from_index += 1
 
     def find_pairs(self, preamble, target):
-        pairs = []
-        count = Counter(preamble)
-        for x in preamble:
-            y = target - x
-            if (x != y and count[y]) or (x == y and count[y] > 1):
-                pairs.append((x, y))
-                count.subtract((x, y))
-        return pairs
+        return [pair for pair in combinations(preamble, 2) if sum(pair) == target]
 
 
 Day9_2()
